@@ -17,14 +17,16 @@
 输入：nums = [3,3], target = 6
 输出：[0,1]*/
 #include<bits/stdc++.h>
-#include <unordered_set>
 using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         unordered_map<int,int> hashmap;
+        for(int i = 0;i < nums.size();i++){
+            if(!hashmap.count(target - nums[i])) hashmap[nums[i]] = i;
+            else return {hashmap[target-nums[i]],i};
+        }
 
-        
-        
+        return {};
     }
 };
