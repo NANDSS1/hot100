@@ -22,6 +22,17 @@ public:
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+        //只要快慢指针相遇了那么就有环
+        //如果快指针到了nullptr就无环
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast!=nullptr && fast->next!=nullptr){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast) return true;
+        }
+
+        return false;
         
     }
 };
