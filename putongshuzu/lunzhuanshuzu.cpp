@@ -20,6 +20,7 @@
 向右轮转 2 步: [3,99,-1,-100]
  
 */
+/*
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {
@@ -40,6 +41,41 @@ public:
 
         
 
+
+    }
+};
+*/
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        //先反转然后再两边各自反转
+        int n = nums.size();
+        k = k%n;
+        //先全部反转
+        int left = 0;
+        int right = n-1;
+        while(left < right){
+            swap(nums[left++],nums[right--]);
+        }
+        //再反转前k个
+        left = 0;
+        right = k-1;
+        while(left < right){
+            swap(nums[left++],nums[right--]);
+        }
+
+        //再反转后面n-k个
+        left = k;
+        right = n-1;
+        while(left < right){
+            swap(nums[left++],nums[right--]);
+        }
+
+        
+
+        
 
     }
 };
