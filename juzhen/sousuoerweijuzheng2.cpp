@@ -4,7 +4,7 @@ public:
         //对每行进行二分查找
         for(const auto& vec:matrix){
             int left = 0;
-            int right = matrix.size()-1;
+            int right = vec.size()-1;
             //左闭右闭的二分查找
             while(left <= right){//这里是和右开不一样的，这里是闭区间
                 int mid = left + (right-left)/2;

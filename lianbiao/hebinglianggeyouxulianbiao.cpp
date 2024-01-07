@@ -15,6 +15,7 @@ public:
                 cur->next = cur2;
                 cur2 = cur2->next;
             }
+            cur = cur->next;
         }
         //这个时候有一个为空了，直接接到链表上
         cur1 == nullptr?cur1 = cur2: cur1 = cur1;

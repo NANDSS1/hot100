@@ -40,7 +40,7 @@ public:
             }
         }
 
-        ans.emplace_back(intervals.back);
+        ans.emplace_back(intervals.back());
         return ans;
     }
 };

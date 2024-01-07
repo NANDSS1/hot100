@@ -53,25 +53,33 @@ using namespace std;
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        //不用快排，要超时，用hash
-        vector<int> sHash(26,0);
-        vector<int> pHash(26,0);
-        if(s.size() < p.size()) return {};
-        int n = p.size();
-        vector<int> ans;
-        //先把所有元素加进两个vector
-        //s先维护一个滑动窗口和p的大小一样的
-        for(int i = 0;i < p.size();i++){
-            sHash[s[i]-'a']++;
-            pHash[p[i]-'a']++;
+        vector<int>sCount(26);
+        vector<int>pCount(26);
+        int sLen = s.size();
+        int pLen = p.size();
+        vector<int> result;
+        if (sLen < pLen) {
+            return vector<int>();
+        }
+
+        for(int i = 0;i < pLen;i++){
+            sCount[s[i]-'a']++;
+            pCount[p[i]-'a']++;
         }
         if (sCount == pCount) {
             result.push_back(0);
         }
 
-        for(int i = 0;i < s.size()-p.size();i++){
+        for(int i = 0;i < sLen-pLen;i++){
+            sCount[s[i]-'a']--;//退出队列头新的元素
+            sCount[s[i+pLen]-'a']++;//加入一个新的元素到队列尾
 
+            //判断当前滑动窗口的数值是否和p相同
+            if(sCount == pCount) result.push_back(i+1); 
         }
+
+        return result;
+        
 
     }
 };
