@@ -16,8 +16,6 @@ public:
     bool isSymmetric(TreeNode* root) {
         //从上到下遍历
         if(root == nullptr) return false;
-
         return isValid(root->left, root->right);
-
     }
 };
