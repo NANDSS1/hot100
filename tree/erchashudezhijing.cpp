@@ -30,3 +30,22 @@ public:
     }
 };
 */
+
+class Solution {
+public:
+    int ans = INT_MIN;
+    int depth(TreeNode* root){
+        if(!root) return 0;
+        //应该是后续遍历
+        //当前结点收集子节点的结果
+        int left = depth(root->left);
+        int right = depth(root->right);
+        ans = max(1+left+right,ans);//这里是算的路径结点上的个数
+
+        return 1+max(left,right);
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        depth(root);
+        return ans-1;
+    }
+};
