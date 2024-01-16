@@ -47,7 +47,7 @@ public:
         // 前序遍历中的第一个节点就是根节点
         int preorder_root = preorder_left;//前序遍历负责知道谁是根节点
         // 在中序遍历中定位根节点
-        int inorder_root = index[preorder[preorder_root]];//中序遍历由根节点划分左右
+        int inorder_root = hashmap[preorder[preorder_root]];//中序遍历由根节点划分左右
         
         // 先把根节点建立出来
         TreeNode* root = new TreeNode(preorder[preorder_root]);
@@ -61,6 +61,7 @@ public:
         root->right = myBuildTree(preorder, inorder, preorder_left + size_left_subtree + 1, preorder_right, inorder_root + 1, inorder_right);
         return root;
     }
+
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int n = preorder.size();
         for(int i = 0; i < preorder.size();i++){
