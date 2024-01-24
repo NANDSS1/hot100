@@ -26,15 +26,17 @@ public:
             if(used[i] == true) continue;
             //used[i]不为true时
             path.push_back(nums[i]);
+            used[i] = true;
             backtracking(n,nums,used);
-            path.pop_back();
             used[i] = false; 
-
+            path.pop_back();
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
         //加个used[i];
         //每层回溯收集元素都从第一个开始
         vector<bool> used(nums.size(),false);
+        backtracking(nums.size(),nums,used);
+        return ans;
     }
 };
